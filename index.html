@@ -2,33 +2,49 @@
 <html lang="en">
   <head>
     <script>
+      // This must run AS SOON as possible, even before window.onload
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual'
+      }
+
       window.onload = function () {
-        // 1. Force scroll to top immediately before anything else
-        if ('scrollRestoration' in history) {
-          history.scrollRestoration = 'manual'
-        }
-        window.scrollTo(0, 0)
-
+        // 1. Website loaded -> wait 10ms
         setTimeout(function () {
-          const loader = document.getElementById('preloader')
+          // 2. Goto top
+          window.scrollTo(0, 0)
+          console.log('Scrolled to top')
 
-          // 2. Start the visual fade out
-          loader.style.transition = 'opacity 0.5s ease'
-          loader.style.opacity = '0'
-          loader.style.visibility = 'hidden'
-
-          // 3. Cleanup: Remove the "invisible wall" so links work
+          // 3. Wait another 10ms -> start removing loader
           setTimeout(function () {
-            loader.style.display = 'none'
-            loader.style.zIndex = '-1'
+            const loader = document.getElementById('preloader')
 
-            // Final safety jump to the top anchor
-            window.location.hash = 'top'
-          }, 500) // Changed to 500ms to actually match your 0.5s transition
+            // Start fade
+            loader.style.transition = 'opacity 0.5s ease'
+            loader.style.opacity = '0'
+            loader.style.visibility = 'hidden'
 
-          console.log('Website has loaded and scrolled to top')
+            // 4. Final Cleanup (Physical removal)
+            // We wait for the 0.5s fade to finish so it looks smooth
+            setTimeout(function () {
+              loader.style.display = 'none'
+              loader.style.zIndex = '-1'
+              // Ensure hash is set without jumping the page again
+              if (window.location.hash !== '#top') {
+                history.replaceState(null, null, '#top')
+              }
+            }, 500)
+
+            console.log('Loader removing...')
+          }, 10)
         }, 10)
       }
+
+      // The "Hard Reload" fix for the browser Back button
+      window.addEventListener('pageshow', function (event) {
+        if (event.persisted) {
+          window.location.reload()
+        }
+      })
     </script>
     <script>
       window.addEventListener('pageshow', function (event) {
