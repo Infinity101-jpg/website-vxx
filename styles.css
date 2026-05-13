@@ -1,0 +1,294 @@
+:root {
+  --header-bg: #181a1b;
+  --btn-bg: #33a6ff;
+  --font-main: 'Montserrat', sans-serif;
+  --nav-link-color: #ccc;
+  --hero-text-color: #e6e6e6;
+}
+
+/* Slight letter spacing for your name */
+.tracking-wide {
+  letter-spacing: 0.15em;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8.8px 12.8px;
+  border-radius: 999px;
+  border: 1px solid rgba(51, 166, 255, 0.55);
+  background: rgba(51, 166, 255, 0.12) !important;
+  color: #cfe9ff;
+  font-size: 10.4px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: default;
+}
+
+.nav-item-mobi {
+  display: none;
+}
+
+.nav-item-pc {
+  display: inline-block;
+}
+
+.badge:hover {
+  border-color: rgba(51, 166, 255, 0.85);
+}
+
+.section-title {
+  font-size: 25.6px !important;
+  font-weight: 400 !important;
+}
+.hero-title {
+  font-weight: 400 !important;
+}
+.fancy-font {
+  font-family: 'Libre Baskerville', serif;
+}
+
+.hero-img {
+  float: right;
+  vertical-align: top !important;
+  margin-top: -30px !important;
+}
+
+.padder {
+  font-size: 1px !important;
+  color: #000;
+  display: table;
+  width: 100%;
+  line-height: 30 !important;
+}
+
+.btn-seperator-portfolio {
+  color: rgba(27, 29, 30, 0.65) !important;
+}
+
+.bg-dark {
+  background-color: var(--header-bg) !important;
+}
+
+.btn-secondary {
+  background: transparent !important;
+  border: 2px solid var(--btn-bg) !important;
+  font-size: 12.8px;
+  font-weight: 800;
+  transition: 0.1s;
+}
+
+.btn-secondary:hover {
+  letter-spacing: 2px; /* Add letter spacing on hover for a subtle effect */
+}
+
+.hero-section {
+  background: var(--header-bg);
+}
+
+/* Optional: make nav links lighter */
+
+.navbar-dark .nav-link {
+  color: var(--nav-link-color);
+  font-size: 12.8px;
+  font-weight: 600;
+  transition: 0.1s;
+}
+
+.navbar-dark .nav-link:hover {
+  color: var(--btn-bg);
+}
+
+/* Header background */
+.navbar {
+  background-color: var(--header-bg) !important;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.highlight {
+  color: var(--btn-bg);
+}
+
+/* Apply Montserrat to brand + nav links + button */
+.navbar-brand,
+.nav-link,
+.btn {
+  font-family: var(--font-main);
+}
+
+/* Button color */
+.btn-primary {
+  background-color: var(--btn-bg);
+  border-color: var(--btn-bg);
+  font-size: 12.8px;
+  font-weight: 800;
+  width: 160px !important;
+  transition: 0.1s;
+}
+
+.about-me-btn {
+  line-height: 1.4 !important;
+  width: 100px !important;
+}
+
+.about-img {
+  width: 90% !important;
+  float: left !important;
+}
+
+.btn-md {
+  height: 33px !important;
+}
+
+.btn-primary:hover {
+  background-color: #4bb4ff; /* slightly lighter hover */
+  border-color: #4bb4ff;
+  letter-spacing: 2px; /* Add letter spacing on hover for a subtle effect */
+}
+
+/* Optional: spacing for your name */
+.navbar-brand {
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  font-size: 17.6px;
+}
+
+.site-dynamic {
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+}
+
+.mobi-about-image {
+  display: none;
+}
+
+.rounded {
+  border-radius: 16.8px !important;
+}
+
+html,
+body {
+  background-color: var(--header-bg);
+}
+
+.skill-card {
+  background: rgba(27, 29, 30, 0.65) !important;
+  border-radius: 16.8px;
+  border: 1px solid rgba(42, 45, 47, 1);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--btn-bg);
+}
+
+.skill-title {
+  font-family: var(--font-main);
+  font-weight: 700;
+  color: var(--text-light);
+  font-size: 17.6px !important;
+}
+
+.portfolio-card-image {
+  width: 100% !important;
+  border-radius: 16.8px !important;
+  margin-bottom: 12px !important;
+}
+
+.skill-text {
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.more-options-card {
+  width: 19%;
+  min-width: 230px !important;
+  background: rgba(27, 29, 30, 0.65) !important;
+  height: 327.86px;
+  border: 1px solid rgba(42, 45, 47, 1);
+  border-radius: 18.6px;
+}
+.pc-contact-iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+  margin-top: 20px;
+}
+.mobi-contact-iframe {
+  display: none;
+  width: 100%;
+  height: 400px;
+  border: none;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .header-btn {
+    display: none;
+  }
+  .nav-item-mobi {
+    display: inline-block;
+  }
+  .nav-item-pc {
+    display: none;
+  }
+  .hero-img {
+    float: none;
+    margin-top: 0px !important;
+    width: 17em !important;
+    display: block;
+    margin: 0 auto;
+  }
+  .hero-title {
+    font-size: 2em !important;
+  }
+  .padder {
+    line-height: 15 !important;
+  }
+  #preloader {
+    transition: opacity 0.5s ease;
+  }
+  .hide-loader {
+    opacity: 0;
+    pointer-events: none; /* Allows user to click through to the site */
+  }
+  .section-title {
+    font-size: 20px !important;
+  }
+  .about-img {
+    display: none;
+  }
+  .mobi-about-image {
+    display: block;
+    width: 100% !important;
+    margin-top: 20px !important;
+    height: auto !important;
+  }
+  .site-dynamic {
+    max-width: 380px !important;
+    margin: 0 auto !important;
+  }
+  .more-options-card {
+    width: 100%;
+  }
+  .pc-contact-iframe {
+    display: none;
+  }
+  .mobi-contact-iframe {
+    display: block;
+    width: 105vw;
+    height: 1000px;
+    margin: 0 10vw 0 10vw 0 !important;
+  }
+  .mobi-gone {
+    display: none;
+  }
+}

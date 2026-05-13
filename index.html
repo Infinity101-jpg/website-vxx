@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      window.onload = function () {
+        // 1. Force scroll to top immediately before anything else
+        if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual'
+        }
+        window.scrollTo(0, 0)
+
+        setTimeout(function () {
+          const loader = document.getElementById('preloader')
+
+          // 2. Start the visual fade out
+          loader.style.transition = 'opacity 0.5s ease'
+          loader.style.opacity = '0'
+          loader.style.visibility = 'hidden'
+
+          // 3. Cleanup: Remove the "invisible wall" so links work
+          setTimeout(function () {
+            loader.style.display = 'none'
+            loader.style.zIndex = '-1'
+
+            // Final safety jump to the top anchor
+            window.location.hash = 'top'
+          }, 500) // Changed to 500ms to actually match your 0.5s transition
+
+          console.log('Website has loaded and scrolled to top')
+        }, 10)
+      }
+    </script>
+    <script>
+      window.addEventListener('pageshow', function (event) {
+        // event.persisted is true if the page is loaded from the cache
+        if (event.persisted) {
+          console.log('Back button detected - forcing hard reload')
+          window.location.reload()
+        }
+      })
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Riaan Van Wyk | Cloud Detection Engineer</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div id="top" class="site-dynamic">
+      <div class="padder bg-dark">.</div>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container d-flex align-items-center">
+          <!-- Left: Brand -->
+          <a class="navbar-brand fw-bold tracking-wide" href="#">
+            RIAAN VAN WYK
+          </a>
+
+          <!-- Mobile toggle -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Center: Nav links -->
+          <div
+            class="collapse navbar-collapse justify-content-center"
+            id="mainNav"
+          >
+            <ul class="navbar-nav text-uppercase">
+              <li class="nav-item">
+                <a onclick="about()" class="nav-link" href="#">About Me</a>
+              </li>
+              <li class="nav-item">
+                <a onclick="skills()" class="nav-link" href="#">My Skills</a>
+              </li>
+              <li class="nav-item">
+                <a onclick="portfolio()" class="nav-link" href="#">Portfolio</a>
+              </li>
+              <li class="nav-item nav-item-pc">
+                <a onclick="contact()" class="nav-link" href="#">Contact Me</a>
+              </li>
+              <li class="nav-item nav-item-mobi">
+                <a onclick="contact2()" class="nav-link">Contact Me</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right: Button -->
+          <a
+            href="./downloadcv.html"
+            target="_blank"
+            class="header-btn btn btn-md btn-primary px-0 rounded-pill text-uppercase ms-3"
+          >
+            Download CV
+          </a>
+        </div>
+      </nav>
+
+      <div class="padder bg-dark">.</div>
+      <div class="padder bg-dark">.</div>
+      <div class="padder bg-dark">.</div>
+
+      <section class="hero-section">
+        <div class="container">
+          <div class="row align-items-center">
+            <!-- LEFT TEXT -->
+            <div class="col-lg-6 text-white">
+              <h1 class="hero-title mb-3 fancy-font">
+                Building
+                <span class="highlight">defenses</span><br />
+                through
+                <span class="highlight">telemetry & <br />automation.</span>
+              </h1>
+
+              <p class="hero-subtext mb-4">
+                I engineer detections for cloud environments, turning raw
+                telemetry into actionable insights through automation, threat
+                analysis, and practical defensive engineering.<br />
+              </p>
+
+              <div class="d-flex gap-3">
+                <a
+                  href="./downloadcv.html"
+                  target="_blank"
+                  class="btn btn-md btn-primary px-0 rounded-pill text-uppercase"
+                  >Download CV</a
+                >
+                <a
+                  href="#"
+                  onclick="about()"
+                  class="about-me-btn btn btn-secondary rounded-pill btn-md px-0"
+                  >About Me</a
+                >
+              </div>
+            </div>
+
+            <!-- RIGHT IMAGE -->
+            <div class="col-lg-6 text-center mt-5 mt-lg-0">
+              <img
+                src="hero-cloud.png"
+                alt="Cloud Security Graphic"
+                class="hero-img img-fluid"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="padder bg-dark">.</div>
+      <div class="padder bg-dark">.</div>
+      <div class="padder bg-dark">.</div>
+      <section id="about" class="about-section bg-dark">
+        <div class="container">
+          <div class="row align-items-center">
+            <!-- LEFT IMAGE -->
+            <div class="col-lg-4 text-center mb-4 mb-lg-0">
+              <img
+                src="img.jpeg"
+                alt="Riaan Van Wyk"
+                class="about-img img-fluid rounded shadow"
+              />
+            </div>
+
+            <!-- RIGHT TEXT -->
+            <div class="col-lg-8 text-white">
+              <h2 class="section-title mb-3 fancy-font">
+                <span class="highlight">About</span> Me
+              </h2>
+
+              <p class="about-text mb-3">
+                I am a
+                <span class="highlight">Cloud Detection Engineer</span>
+                dedicated to transforming raw telemetry into high‑fidelity
+                defensive intelligence. With a focus on the intersection of
+                threat analysis and practical engineering, I specialize in
+                building
+                <span class="highlight">automated detection systems</span> that
+                safeguard complex cloud environments.
+              </p>
+
+              <p class="about-text mb-4">
+                My approach centers on turning vast data streams into
+                <span class="highlight">actionable insights</span>, ensuring
+                that security posture evolves at the speed of the modern cloud.
+                By leveraging automation to streamline response and defensive
+                engineering.
+              </p>
+
+              <div class="tech-stack d-flex flex-wrap gap-3">
+                <span class="badge bg-primary">AWS</span>
+                <span class="badge bg-primary">CloudTrail</span>
+                <span class="badge bg-primary">GuardDuty</span>
+                <span class="badge bg-primary">Azure</span>
+                <span class="badge bg-primary">Python</span>
+                <span class="badge bg-primary">Git</span>
+              </div>
+            </div>
+          </div>
+          <img class="mobi-about-image rounded" src="img.jpeg" />
+        </div>
+      </section>
+      <div class="padder dark-bg">.</div>
+      <div class="padder dark-bg">.</div>
+      <div class="padder dark-bg">.</div>
+      <section id="skills" class="skills-section dark-bg text-white">
+        <div class="container text-center">
+          <!-- Section Header -->
+          <h2 class="section-title mb-3 fancy-font">
+            My <span class="highlight">Skills</span>
+          </h2>
+          <p>
+            A focused set of skills built around cybersecurity, cloud detection,
+            and practical engineering.
+          </p>
+          <div class="padder dark-bg">.</div>
+          <!-- Skill Cards -->
+          <div class="row g-4">
+            <!-- Cybersecurity -->
+            <div class="col-lg-4">
+              <div class="skill-card p-4 h-100">
+                <h4 class="skill-title mb-3">Cybersecurity</h4>
+                <p class="skill-text">
+                  Threat hunting, incident response, detection engineering,
+                  adversary emulation, and operational security.
+                </p>
+              </div>
+            </div>
+
+            <!-- Cloud Detection -->
+            <div class="col-lg-4">
+              <div class="skill-card p-4 h-100">
+                <h4 class="skill-title mb-3">Cloud Detection</h4>
+                <p class="skill-text">
+                  Azure/AWS monitoring, telemetry pipelines, SIEM rule design,
+                  alert tuning, and visibility architecture.
+                </p>
+              </div>
+            </div>
+
+            <!-- Engineering -->
+            <div class="col-lg-4">
+              <div class="skill-card p-4 h-100">
+                <h4 class="skill-title mb-3">Engineering</h4>
+                <p class="skill-text">
+                  Automation, scripting, API integrations, scalable tooling, and
+                  building secure systems.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="padder dark-bg">.</div>
+      <div class="padder dark-bg">.</div>
+      <div class="padder dark-bg">.</div>
+      <section id="portfolio" class="skills-section dark-bg text-white">
+        <div class="container text-center">
+          <!-- Section Header -->
+          <h2 class="section-title mb-3 fancy-font">
+            My <span class="highlight">Portfolio</span>
+          </h2>
+          <p>
+            A collection of the projects I’ve built, refined, and learned from
+            along the way.
+          </p>
+          <div class="padder dark-bg">.</div>
+          <!-- Skill Cards -->
+          <div class="row g-4">
+            <!-- Cybersecurity -->
+            <div class="col-lg-4">
+              <div class="skill-card p-4 h-100">
+                <img
+                  class="portfolio-card-image"
+                  src="https://tangerine-hummingbird-1479b6.netlify.app/assets/project-1.png"
+                />
+                <div class="padder">.</div>
+                <h4 class="skill-title mb-3">Cloud Detection</h4>
+                <p class="skill-text">
+                  Azure/AWS monitoring, telemetry pipelines, SIEM rule design,
+                  alert tuning, and visibility architecture.
+                </p>
+                <a
+                  href="./gh1"
+                  target="_blank"
+                  class="about-me-btn btn btn-secondary rounded-pill btn-md px-0"
+                  >Github</a
+                >
+                <span class="btn-seperator-portfolio">....</span>
+                <a
+                  href="./ld1"
+                  target="_blank"
+                  class="about-me-btn btn btn-secondary rounded-pill btn-md px-0"
+                  >Live Demo</a
+                >
+              </div>
+            </div>
+
+            <!-- Cloud Detection -->
+            <div class="col-lg-4">
+              <div class="skill-card p-4 h-100">
+                <img
+                  class="portfolio-card-image"
+                  src="https://tangerine-hummingbird-1479b6.netlify.app/assets/project-1.png"
+                />
+                <div class="padder">.</div>
+                <h4 class="skill-title mb-3">Cloud Detection</h4>
+                <p class="skill-text">
+                  Azure/AWS monitoring, telemetry pipelines, SIEM rule design,
+                  alert tuning, and visibility architecture.
+                </p>
+                <a
+                  href="./gh2"
+                  target="_blank"
+                  class="about-me-btn btn btn-secondary rounded-pill btn-md px-0"
+                  >Github</a
+                >
+                <span class="btn-seperator-portfolio">....</span>
+                <a
+                  href="./ld2"
+                  target="_blank"
+                  class="about-me-btn btn btn-secondary rounded-pill btn-md px-0"
+                  >Live Demo</a
+                >
+              </div>
+            </div>
+
+            <!-- Engineering -->
+            <div class="col-lg-4">
+              <div class="skill-card p-4 h-100">
+                <img
+                  class="portfolio-card-image"
+                  src="https://tangerine-hummingbird-1479b6.netlify.app/assets/project-1.png"
+                />
+                <div class="padder">.</div>
+                <h4 class="skill-title mb-3">Cloud Detection</h4>
+                <p class="skill-text">
+                  Azure/AWS monitoring, telemetry pipelines, SIEM rule design,
+                  alert tuning, and visibility architecture.
+                </p>
+                <a
+                  href="./gh3"
+                  target="_blank"
+                  class="about-me-btn btn btn-secondary rounded-pill btn-md px-0"
+                  >Github</a
+                >
+                <span class="btn-seperator-portfolio">....</span>
+                <a
+                  href="./ld3"
+                  target="_blank"
+                  class="about-me-btn btn btn-secondary rounded-pill btn-md px-0"
+                  >Live Demo</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="padder dark-bg mobi-gone">.</div>
+      <div class="padder dark-bg mobi-gone">.</div>
+      <div class="padder dark-bg mobi-gone">.</div>
+
+      <iframe
+        sandbox="allow-forms allow-scripts allow-same-origin allow-top-navigation allow-top-navigation-by-user-activation"
+        loading="lazy"
+        scrolling="no"
+        src="./contact.html#contact"
+        class="pc-contact-iframe"
+        id="contact"
+      >
+      </iframe>
+      <script>
+        // Legacy smooth scroll helper
+        function smoothScrollTo(targetY, duration) {
+          const startY = window.scrollY
+          const distance = targetY - startY
+          const startTime = Date.now()
+
+          function animation() {
+            const now = Date.now()
+            const time = Math.min(1, (now - startTime) / duration)
+
+            // Ease-in-out curve
+            const eased = 0.5 * (1 - Math.cos(Math.PI * time))
+
+            window.scrollTo(0, startY + distance * eased)
+
+            if (time < 1) {
+              requestAnimationFrame(animation)
+            }
+          }
+
+          animation()
+        }
+
+        // Your function using legacy smooth scroll
+        function contact2() {
+          const el = document.getElementById('contact2')
+          if (!el) return
+
+          const target = el.offsetTop + 70
+
+          // Smooth scroll using legacy animation
+          smoothScrollTo(target, 600) // 600ms duration
+        }
+
+        function portfolio() {
+          const el = document.getElementById('portfolio')
+          if (!el) return
+
+          const target = el.offsetTop - 10
+
+          // Smooth scroll using legacy animation
+          smoothScrollTo(target, 600) // 600ms duration
+        }
+
+        function skills() {
+          const el = document.getElementById('skills')
+          if (!el) return
+
+          const target = el.offsetTop - 10
+
+          // Smooth scroll using legacy animation
+          smoothScrollTo(target, 600) // 600ms duration
+        }
+
+        function about() {
+          const el = document.getElementById('about')
+          if (!el) return
+
+          const target = el.offsetTop - 10
+
+          // Smooth scroll using legacy animation
+          smoothScrollTo(target, 600) // 600ms duration
+        }
+
+        function contact() {
+          const el = document.getElementById('contact')
+          if (!el) return
+
+          const target = el.offsetTop - 10
+
+          // Smooth scroll using legacy animation
+          smoothScrollTo(target, 600) // 600ms duration
+        }
+      </script>
+
+      <iframe
+        scrolling="no"
+        src="./mobiiframe.html#contact"
+        class="mobi-contact-iframe"
+        id="contact2"
+        sandbox="allow-forms allow-scripts allow-same-origin allow-top-navigation allow-top-navigation-by-user-activation"
+        loading="lazy"
+        scrolling="no"
+      ></iframe>
+      <!-- Bootstrap JS -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+  </body>
+  <div
+    id="preloader"
+    class="d-flex justify-content-center align-items-center position-fixed top-0 start-0 w-100 h-100 bg-dark"
+    style="z-index: 9999"
+  >
+    <div
+      class="spinner-border text-primary"
+      role="status"
+      style="width: 3rem; height: 3rem"
+    >
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</html>
